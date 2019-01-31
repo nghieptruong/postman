@@ -1,0 +1,174 @@
+{
+	"info": {
+		"_postman_id": "1722b98a-c758-40da-bdac-a14088af71f6",
+		"name": "httpbin",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "trello",
+			"item": [
+				{
+					"name": "create board",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c458e708-ba4b-49a7-9676-50b655d7b9f9",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Board should be created\", function () {",
+									"    pm.expect(jsonData.name).to.eql(\"My board 2\");",
+									"});",
+									"",
+									"console.log(jsonData);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://api.trello.com/1/boards/?name=My board 3&key=e27a96497ccc7f6d31b8045135e3ec1f&token=4a4a3ad65e3232d1281bc62df1b9b07c84317baeef7926fcc806d984b54d6d3e",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"boards",
+								""
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "My board 3"
+								},
+								{
+									"key": "key",
+									"value": "e27a96497ccc7f6d31b8045135e3ec1f"
+								},
+								{
+									"key": "token",
+									"value": "4a4a3ad65e3232d1281bc62df1b9b07c84317baeef7926fcc806d984b54d6d3e"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GET request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "httpbin.org/get?myparameter=1&myparameter=whatever",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"get"
+					],
+					"query": [
+						{
+							"key": "myparameter",
+							"value": "1"
+						},
+						{
+							"key": "myparameter",
+							"value": "whatever"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"John\",\n\t\"email\": \"john@example.com\",\n\t\"id\": \"{{uuid}}\"\n}"
+				},
+				"url": {
+					"raw": "https://httpbin.org/post",
+					"protocol": "https",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UUID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7092af50-9a20-4d17-bc6d-6d3a12ddef89",
+						"exec": [
+							"let response = pm.response.json()",
+							"pm.globals.set(\"uuid\", response.uuid);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://httpbin.org/uuid",
+					"protocol": "https",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"uuid"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
