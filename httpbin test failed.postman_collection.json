@@ -1,0 +1,21 @@
+{
+	"info": {
+		"_postman_id": "5960d9a3-a099-4005-9c7a-b5ffb6c5c331",
+		"name": "httpbin test failed",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
