@@ -7,11 +7,34 @@
 	"item": [
 		{
 			"name": "Get Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a429c279-421f-49be-92a2-c6c8e3aac87d",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": ""
+					"raw": "https://deals.bestbuy.com/",
+					"protocol": "https",
+					"host": [
+						"deals",
+						"bestbuy",
+						"com"
+					],
+					"path": [
+						""
+					]
 				}
 			},
 			"response": []
